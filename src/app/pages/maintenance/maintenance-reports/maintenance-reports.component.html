@@ -1,0 +1,39 @@
+<div>
+	<h2>REPORTES / VENTAS</h2>
+	<div class="flex-column content" [formGroup]="formGroup">
+		<div class="content__filter">
+			<mat-form-field appearance="outline">
+				<mat-label>Fecha de inicio</mat-label>
+				<input matInput [matDatepicker]="pickerInit" formControlName="dateInit" />
+				<mat-datepicker-toggle matSuffix [for]="pickerInit"></mat-datepicker-toggle>
+				<mat-datepicker #pickerInit></mat-datepicker>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Fecha fin</mat-label>
+				<input matInput [matDatepicker]="pickerFin" formControlName="dateEnd" />
+				<mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+				<mat-datepicker #pickerFin></mat-datepicker>
+			</mat-form-field>
+		</div>
+
+		<div>
+			<button mat-raised-button color="primary" class="content__query" (click)="clickQuery()">CONSULTAR</button>
+			<button mat-raised-button color="accent" (click)="clickClear()">LIMPIAR</button>
+		</div>
+
+		<div class="chart" *ngIf="showReport">
+			<ngx-charts-pie-chart [results]="dataPie" [labels]="true" [trimLabels]="false" style="fill: white">
+			</ngx-charts-pie-chart>
+		</div>
+
+		<div class="reports" *ngIf="showReport">
+			<button class="icon-button" (click)="generatePdf()">
+				<img class="icon-button__icon" src="assets/images/pdf.png" />
+			</button>
+			<button class="icon-button" (click)="generateExcel()">
+				<img class="icon-button__icon" src="assets/images/xls.png" />
+			</button>
+		</div>
+	</div>
+</div>

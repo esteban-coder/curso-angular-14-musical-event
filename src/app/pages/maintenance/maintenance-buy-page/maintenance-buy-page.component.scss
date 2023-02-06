@@ -1,0 +1,19 @@
+@use '../../../commons/styles/colors.scss';
+::ng-deep {
+	.mat-select-value-text {
+		color: white;
+	}
+}
+.content {
+	padding: 2em;
+	background-color: colors.$secondary-color;
+	gap: 1em;
+
+	&__filter {
+		display: flex;
+		gap: 2em;
+		> * {
+			width: 100%;
+		}
+	}
+}

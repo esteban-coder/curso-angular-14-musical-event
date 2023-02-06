@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+#npm test
+#npx pretty-quick --pattern "src/**/*.*(ts|json|html|scss)" --staged  && ng lint --fix
+npx pretty-quick --pattern "src/**/**.ts" --pattern "src/**/**.json" --pattern "src/**/**.html"  --pattern "src/**/**.scss"  --staged --verbose && ng lint --fix

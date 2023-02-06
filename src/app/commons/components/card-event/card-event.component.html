@@ -1,0 +1,27 @@
+<mat-card
+	*ngIf="event"
+	class="card flex-column custom-card"
+	[class]="{ 'card--selected': isSelect }"
+	(click)="clickEvent()"
+>
+	<div class="card__header">
+		<span class="title">{{ event.date }} </span>
+		<div class="subtitle">
+			<span class="subtitle__hour">{{ event.hour }}</span>
+			<span class="">{{ event.genre }}</span>
+		</div>
+	</div>
+
+	<div *ngIf="event.urlImage" class="card__img" [style.background-image]="'url(' + event.urlImage + ')'"></div>
+
+	<div
+		*ngIf="!event.urlImage"
+		class="card__img"
+		[style.background-image]="'url(../../../../assets/images/search.png)'"
+	></div>
+
+	<div class="card__content flex-column">
+		<span class="name-event">{{ event.title }} </span>
+		<span class="location">{{ event.place }}</span>
+	</div>
+</mat-card>

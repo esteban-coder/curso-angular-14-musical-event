@@ -1,0 +1,24 @@
+@use '../../../../styles/colors.scss';
+
+.container {
+	padding: 16px;
+	background-color: colors.$secondary-color;
+
+	label {
+		color: white;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1em;
+
+		&__social {
+			display: flex;
+			img {
+				cursor: pointer;
+			}
+		}
+	}
+}

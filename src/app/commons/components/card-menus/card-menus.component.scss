@@ -1,0 +1,23 @@
+@use '../../styles/colors.scss';
+.container {
+	display: flex;
+	gap: 1em;
+
+	&__card {
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px;
+
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		img {
+			width: 51px;
+		}
+		&--active {
+			background-color: colors.$primary-color;
+			color: colors.$secondary-color;
+		}
+	}
+}

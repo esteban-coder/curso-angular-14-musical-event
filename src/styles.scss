@@ -1,0 +1,174 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use './app/commons/styles/colors.scss';
+@import 'node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme';
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$musical-event-primary: mat.define-palette(mat.$amber-palette, 700, 100, 900);
+$musical-event-accent: mat.define-palette(mat.$pink-palette, 500, 200, 700);
+
+// The warn palette is optional (defaults to red).
+$musical-event-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$musical-event-theme: mat.define-light-theme(
+	(
+		color: (
+			primary: $musical-event-primary,
+			accent: $musical-event-accent,
+			warn: $musical-event-warn
+		)
+	)
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($musical-event-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: colors.$text-color;
+	}
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	mat-tab-body {
+		background-color: colors.$secondary-color;
+	}
+
+	.mat-flat-button.mat-primary,
+	.mat-raised-button.mat-primary,
+	.mat-fab.mat-primary,
+	.mat-mini-fab.mat-primary {
+		color: colors.$secondary-color;
+	}
+
+	.flex-column {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.custom-card {
+		background: colors.$secondary-color;
+		box-shadow: 0px 4px 8px rgba(41, 54, 84, 0.5);
+		border-radius: 4px;
+	}
+}
+
+/*
+Estilos para cambiar al mat-input
+*/
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+	margin-bottom: -1.25em;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+	color: #8f7345;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-label {
+	color: colors.$primary-color;
+}
+
+textarea.mat-input-element {
+	color: white;
+}
+
+input.mat-input-element {
+	color: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+/*Estilos para cambiar la mattable*/
+
+.mat-header-cell {
+	font-size: 14px;
+	font-weight: bold;
+	color: colors.$primary-color !important;
+	text-transform: uppercase;
+}
+
+table {
+	background-color: #51545c !important;
+	color: white !important;
+	width: 100%;
+}
+
+table,
+th,
+td {
+	color: white !important;
+	border-bottom-color: #8f7345 !important;
+}
+
+/*Estilos para mat-paginator*/
+mat-paginator {
+	background-color: #51545c !important;
+	color: white !important;
+}
+
+.mat-paginator-range-actions {
+	button {
+		color: colors.$primary-color !important;
+	}
+}
+
+.mat-calendar-table {
+	background-color: white !important;
+}
+/*Estilos para cambiar el color disabled de los botones*/
+
+.mat-flat-button.mat-primary.mat-button-disabled,
+.mat-flat-button.mat-accent.mat-button-disabled,
+.mat-flat-button.mat-warn.mat-button-disabled,
+.mat-flat-button.mat-button-disabled.mat-button-disabled,
+.mat-raised-button.mat-primary.mat-button-disabled,
+.mat-raised-button.mat-accent.mat-button-disabled,
+.mat-raised-button.mat-warn.mat-button-disabled,
+.mat-raised-button.mat-button-disabled.mat-button-disabled,
+.mat-fab.mat-primary.mat-button-disabled,
+.mat-fab.mat-accent.mat-button-disabled,
+.mat-fab.mat-warn.mat-button-disabled,
+.mat-fab.mat-button-disabled.mat-button-disabled,
+.mat-mini-fab.mat-primary.mat-button-disabled,
+.mat-mini-fab.mat-accent.mat-button-disabled,
+.mat-mini-fab.mat-warn.mat-button-disabled,
+.mat-mini-fab.mat-button-disabled.mat-button-disabled {
+	background-color: #54483a;
+	color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,109 @@
+<div>
+	<h2>Generos</h2>
+
+	<div class="content">
+		<mat-tab-group
+			mat-align-tabs="center"
+			backgroundColor="primary"
+			[selectedIndex]="indexTabSaveGenre"
+			(selectedIndexChange)="indexTabSaveGenre = $event"
+		>
+			<mat-tab backgroundColor="primary">
+				<ng-template mat-tab-label>
+					<mat-icon class="example-tab-icon">playlist_add</mat-icon>
+					REGISTRO
+				</ng-template>
+
+				<form class="crud flex-column" autocomplete="off" [formGroup]="formGroup" (ngSubmit)="clickSave()">
+					<div class="crud__elements">
+						<div class="fields flex-column">
+							<mat-form-field class="example-full-width" appearance="outline">
+								<mat-label>description</mat-label>
+								<textarea matInput formControlName="description"></textarea>
+								<mat-error *ngIf="descriptionField.hasError('required')">Este campo es requerido</mat-error>
+							</mat-form-field>
+
+							<mat-form-field appearance="outline">
+								<mat-label>Estado</mat-label>
+								<mat-select formControlName="status">
+									<mat-option [value]="1"> ACTIVO </mat-option>
+									<mat-option [value]="0"> INACTIVO </mat-option>
+								</mat-select>
+								<mat-error *ngIf="statusField.hasError('required')">Este campo es requerido</mat-error>
+							</mat-form-field>
+
+							<button mat-raised-button color="primary" type="submit">GUARDAR</button>
+
+							<button mat-raised-button color="accent" type="button">LIMPIAR</button>
+						</div>
+
+					</div>
+				</form>
+			</mat-tab>
+
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<mat-icon class="example-tab-icon">list</mat-icon>
+					LISTADO
+				</ng-template>
+
+				<div class="list flex-column">
+					<mat-form-field appearance="outline">
+						<mat-label>Filter</mat-label>
+						<input matInput (keyup)="applyFilter($event)" #input />
+					</mat-form-field>
+
+					<div class="mat-elevation-z8">
+						<table #table mat-table [dataSource]="dataSource">
+							<ng-container matColumnDef="description">
+								<th mat-header-cell *matHeaderCellDef>Descripción</th>
+								<td mat-cell *matCellDef="let element">{{ element.name }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="status">
+								<th mat-header-cell *matHeaderCellDef>Estado</th>
+								<td mat-cell *matCellDef="let element">{{ element.status }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="action">
+								<th mat-header-cell *matHeaderCellDef></th>
+								<td mat-cell *matCellDef="let element">
+									<button mat-icon-button [matMenuTriggerFor]="menu">
+										<mat-icon>more_vert</mat-icon>
+									</button>
+
+									<mat-menu #menu="matMenu">
+										<button mat-menu-item (click)="clickUpdate(element.id)">
+											<mat-icon color="primary">edit</mat-icon>
+											<span>Editar</span>
+										</button>
+										<button mat-menu-item (click)="clickDelete(element.id)">
+											<mat-icon color="warn">delete</mat-icon>
+											<span>Eliminar</span>
+										</button>
+									</mat-menu>
+								</td>
+							</ng-container>
+
+							<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+							<!-- Row shown when there is no matching data. -->
+							<tr class="mat-row" *matNoDataRow>
+								<td class="mat-cell" colspan="3">No existe información para: "{{ input.value }}"</td>
+							</tr>
+						</table>
+						<!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons> </mat-paginator> -->
+						<mat-paginator
+							#paginator
+							[pageSizeOptions]="pageSizeOptions"
+							(page)="getPaginatorData()"
+							aria-label="Select page"
+						>
+						</mat-paginator>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

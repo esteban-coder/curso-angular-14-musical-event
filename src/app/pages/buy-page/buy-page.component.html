@@ -1,0 +1,79 @@
+<h4>Compra tus entradas y disfruta!</h4>
+<div class="container" *ngIf="cardEvent">
+	<app-card-event [event]="cardEvent"></app-card-event>
+
+	<mat-card class="container__card custom-card flex-column" *ngIf="statusBuy === 'INFO'">
+		<div>
+			<span class="title">Aserca del evento</span><br /><br />
+			<span>
+				{{ cardEvent.description }}
+			</span>
+		</div>
+
+		<div class="price">
+			<div class="price__value">
+				<span>Precio:</span>
+				<span>{{ cardEvent.price | currency : 'PEN' : 'symbol' : '.2-2' }}</span>
+			</div>
+			<button mat-raised-button color="accent" (click)="clickBuy('BUY')">COMPRAR ENTRADA</button>
+		</div>
+	</mat-card>
+
+	<mat-card class="container__card-buy custom-card flex-column" *ngIf="statusBuy === 'BUY'">
+		<div class="header">
+			<span class="title">{{ cardEvent.title }} </span>
+			<div class="header__price">
+				<span>PRECIO:</span>
+				<span>{{ cardEvent.price | currency : 'PEN' : 'symbol' : '.2-2' }}</span>
+			</div>
+		</div>
+
+		<div>
+			<mat-form-field appearance="outline">
+				<mat-label>Cantidad de entradas</mat-label>
+				<input
+					matInput
+					type="number"
+					autocomplete="off"
+					min="1"
+					[(ngModel)]="numberEntries"
+					(input)="inputCalculate()"
+				/>
+			</mat-form-field>
+
+			<h3>Total: {{ total | currency : 'PEN' : 'symbol' : '.2-2' }}</h3>
+		</div>
+
+		<button mat-raised-button color="accent" (click)="clickBuy('VOUCHER')">PAGAR</button>
+	</mat-card>
+
+	<mat-card class="card-buy-total custom-card flex-column" *ngIf="statusBuy === 'VOUCHER' && voucher">
+		<div>
+			<span class="title">VOUCHER</span>
+
+			<div class="card-buy-total__item flex-column">
+				<span>Nro. Operacion</span>
+				<span>{{ voucher.operationNumber }} </span>
+			</div>
+			<div class="card-buy-total__item flex-column">
+				<span>Cliente</span>
+				<span>{{ voucher.fullName }}</span>
+			</div>
+
+			<div class="card-buy-total__item flex-column">
+				<span>Nro. Tickets</span>
+				<span>{{ voucher.quantity }}</span>
+			</div>
+
+			<div class="card-buy-total__item flex-column">
+				<span>Fecha de Pago</span>
+				<span>{{ voucher.saleDate | date : 'dd/MM/yyyy' }} </span>
+			</div>
+		</div>
+
+		<div class="card-buy-total__total">
+			<h3>TOTAL:</h3>
+			<h3>{{ voucher.totalSale | currency : 'PEN' : 'symbol' : '.2-2' }}</h3>
+		</div>
+	</mat-card>
+</div>

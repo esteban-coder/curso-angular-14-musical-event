@@ -1,0 +1,33 @@
+<div class="root flex-column">
+	<h2>Compra tus entradas y disfruta!</h2>
+	<div class="container">
+		<mat-card class="container__card custom-card flex-column">
+			<h4>INICIO DE SESIÓN</h4>
+
+			<form class="content flex-column" [formGroup]="formGroup" autocomplete="off" (ngSubmit)="clickLogin()">
+				<mat-form-field appearance="outline">
+					<mat-label>E-mail</mat-label>
+					<input matInput type="email" autocomplete="off" min="1" formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">EL email es requerido</mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">Ingrese un E-mail valido</mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Contraseña</mat-label>
+					<input matInput type="password" autocomplete="off" min="1" formControlName="password" />
+					<mat-error *ngIf="formGroup.get('password')!.hasError('required')">Ingrese su contraseña</mat-error>
+				</mat-form-field>
+
+				<div class="content__login flex-column">
+					<span [routerLink]="pathRecovery"> ¿Olvidaste tu contraseña?</span>
+					<button mat-raised-button color="primary" [disabled]="disabledButton">INGRESAR</button>
+				</div>
+
+				<div class="content__register">
+					<span>Si no tienes una cuenta</span>
+					<a [routerLink]="pathRegister">regístrate</a>
+				</div>
+			</form>
+		</mat-card>
+	</div>
+</div>

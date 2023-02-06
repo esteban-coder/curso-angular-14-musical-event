@@ -1,0 +1,11 @@
+<div class="container">
+	<div
+		class="container__card custom-card flex-column"
+		*ngFor="let menu of menus"
+		[ngClass]="{ 'container__card--active': menu.active }"
+		[routerLink]="menu.path"
+	>
+		<img src="{{ 'assets/images/card-menus/' + menu.nameImage }} " />
+		<span>{{ menu.title }} </span>
+	</div>
+</div>

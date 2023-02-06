@@ -1,0 +1,35 @@
+@use '../../styles/colors.scss';
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+
+	.header {
+		background-color: colors.$secondary-color;
+		display: flex;
+		justify-content: center;
+
+		&__content {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			max-width: 1200px;
+			min-width: 500px;
+			width: 100%;
+			padding: 16px;
+		}
+	}
+
+	&__content {
+		padding: 16px;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+
+		.main {
+			width: 70%;
+		}
+	}
+}

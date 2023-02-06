@@ -1,0 +1,77 @@
+<div class="root flex-column">
+	<h2>Regístrate, ingresa tus datos</h2>
+	<div class="container">
+		<mat-card class="container__card custom-card flex-column">
+			<h4>REGISTRO</h4>
+
+			<form class="content flex-column" autocomplete="off" [formGroup]="formGroup" (ngSubmit)="clickRegister()">
+				<mat-form-field appearance="outline">
+					<mat-label>Nombres</mat-label>
+					<input matInput type="text" formControlName="firstName" />
+					<mat-error *ngIf="firtsField.hasError('required')"> Ingrese sus nombres </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Apellidos</mat-label>
+					<input matInput type="text" formControlName="lastName" />
+					<mat-error *ngIf="lastNameField.hasError('required')"> Ingrese sus apellidos </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>E-mail</mat-label>
+					<input matInput type="email" formControlName="email" />
+					<mat-error *ngIf="emailField.hasError('required')">Ingrese su e-mail </mat-error>
+					<mat-error *ngIf="emailField.hasError('email')"> Ingrese un e-mail valido </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Edad</mat-label>
+					<input matInput type="number" formControlName="age" />
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Contraseña</mat-label>
+					<input matInput type="password" formControlName="password" />
+					<mat-error *ngIf="passwordField.hasError('customPasswordValidator')">
+						La contraseña debe tener al menos una mayúscula, minúscula, simbolo, número y mayor a 8 caracteres
+					</mat-error>
+					<mat-error *ngIf="passwordField.hasError('required')"> Ingrese una contraseña </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Repetir contraseña</mat-label>
+					<input
+						matInput
+						type="password"
+						formControlName="confirmPassword"
+						[errorStateMatcher]="passwordStateMatcher"
+					/>
+					<mat-error *ngIf="confirmPasswordField.hasError('required')"> Ingrese una contraseña </mat-error>
+					<mat-error *ngIf="formGroup.hasError('crossConfirmPasswordError')">
+						La contraseña no coincide, verifique</mat-error
+					>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Documento</mat-label>
+					<mat-select formControlName="typeDocument">
+						<mat-option [value]="1"> DNI </mat-option>
+						<mat-option [value]="2"> C.E </mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Nro Documento</mat-label>
+					<input matInput type="text" formControlName="documentNumber" />
+				</mat-form-field>
+
+				<button mat-raised-button color="primary" type="submit" [disabled]="disabledButton">REGISTRARSE</button>
+
+				<div class="content__register">
+					<span>Si ya tienes una cuenta </span>
+					<a [routerLink]="pathLogin">ingresa</a>
+				</div>
+			</form>
+		</mat-card>
+	</div>
+</div>

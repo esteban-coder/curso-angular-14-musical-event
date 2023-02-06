@@ -1,0 +1,23 @@
+<div class="container">
+	<header class="header">
+		<div class="header__logo" routerLink="/">
+			<img src="assets/images/music-events.png" alt="music-events" />
+			<h3>MUSICAL EVENTS</h3>
+		</div>
+
+		<div>
+			<input type="text" autocomplete="off" placeholder="Buscar..." />
+		</div>
+
+		<div *ngIf="!isLogged">
+			<button mat-button color="primary" routerLink="/login">INGRESAR</button>
+			<button mat-button color="accent" routerLink="/register">REGÍSTRATE</button>
+		</div>
+
+		<div class="header__user" *ngIf="isLogged">
+			<h3>{{usuario}}</h3>
+			<button mat-button color="primary" routerLink="/my-account">MI CUENTA</button>
+			<button mat-button color="accent" (click)="logout()">CERRAR SESIÓN</button>
+		</div>
+	</header>
+</div>

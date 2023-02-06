@@ -1,0 +1,46 @@
+@use '../../../../styles/colors.scss';
+:host {
+	width: 100%;
+}
+
+.container {
+	background-color: colors.$secondary-color;
+	width: 100%;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		gap: 2em;
+
+		input {
+			background: white;
+			padding: 10px;
+			border-radius: 9px;
+			width: 18em;
+		}
+
+		h1,
+		h3 {
+			color: white;
+		}
+		&__logo {
+			display: flex;
+			align-items: center;
+			gap: 1em;
+			cursor: pointer;
+			img {
+				width: 4rem;
+			}
+		}
+
+		&__user {
+			display: flex;
+			align-items: baseline;
+			:nth-child(1) {
+				margin-right: 2.5em;
+			}
+		}
+	}
+}

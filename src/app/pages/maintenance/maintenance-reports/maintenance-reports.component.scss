@@ -1,0 +1,41 @@
+@use '../../../commons/styles/colors.scss';
+.content {
+	padding: 2em;
+	background-color: colors.$secondary-color;
+	gap: 1em;
+
+	&__filter {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+		gap: 2em;
+
+		> * {
+			width: 100%;
+		}
+	}
+
+	&__query {
+		margin-right: 10px;
+	}
+
+	.chart {
+		height: 400px;
+	}
+
+	.reports {
+		display: flex;
+		justify-content: center;
+		gap: 2em;
+		.icon-button {
+			background: none;
+			padding: 0;
+			border: 0;
+			cursor: pointer;
+			&__icon {
+				width: 40px;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
