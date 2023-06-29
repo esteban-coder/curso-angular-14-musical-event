@@ -12,19 +12,19 @@ ng add @angular/material@14
 
 Cuando empieze a instalar nos arrojara un mensaje confirmando la versión de angular material, indicamos _Y_
 
-![image info](./files-readme/material_1.jpg)
+![image info](./files-readme/material_1.png)
 
 Cuando se muestre la opción de escoger un tema, nosotros usaremos la opción **"custom"**
 
-![image info](./files-readme/material_2.jpg)
+![image info](./files-readme/material_2.png)
 
 Cuando se muestre la opción de usar la typografia diremos que **NO**
 
-![image info](./files-readme/material_3.jpg)
+![image info](./files-readme/material_3.png)
 
 y por ultimo nos pedira si usaremos browser animation, le diremos _Include and enabled animations_:
 
-![image info](./files-readme/material_4.jpg)
+![image info](./files-readme/material_4.png)
 
 Cuando finalize la instalación veremos que se habran modificado algunos archivos, el archivo **index.html** habra sufrido cambios, pero lo que haremos es reemplazar todo ese contenido por el siguiente:
 
